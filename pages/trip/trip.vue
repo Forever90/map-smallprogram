@@ -200,9 +200,15 @@ export default {
     
     // 添加地点到行程
     addLocation(trip) {
-      uni.switchTab({
-        url: `/pages/map/map?addToTrip=true`
-      });
+		const externoptions = {
+			"addToTrip": true
+		};
+		uni.setStorageSync("externoptions", externoptions);
+		console.log("addLocation", externoptions);
+		uni.switchTab({
+			url: `/pages/map/map`
+		});
+
     },
     
     // 查看行程详情

@@ -93,7 +93,12 @@ export default {
     }
   },
   onLoad(options) {
-	console.log("test", options);
+	uni.$on('newMarker', (data) => {
+		console.log("onshow newMarker", data);
+		this.externalMarkers = data; // 接收参数
+		this.showExternalMarkers();
+	});
+	  
     // 初始化地图
     this.initMap();
     
@@ -113,6 +118,28 @@ export default {
 		this.isAddToTrip = true;
 		this.loadTripOptions();
     }
+  },
+  onShow(options){
+	  	console.log("onShow");
+		
+		// 检查是否有传入的标记点
+		if (options.markers) {
+			try {
+			  this.externalMarkers = JSON.parse(decodeURIComponent(options.markers));
+			  this.showExternalMarkers();
+			} catch (e) {
+			  console.error('解析标记点数据失败', e);
+			}
+		}
+		  
+		const externoptions = uni.getStorageSync('externoptions');
+		console.log("onShow externoptions", externoptions);
+		// 检查是否是从行程页面跳转来添加地点
+		if (externoptions.addToTrip) {
+			console.log("externoptions.addToTrip", externoptions.addToTrip);
+			this.isAddToTrip = true;
+			this.loadTripOptions();
+		}
   },
   methods: {
     async initMap() {
@@ -150,6 +177,7 @@ export default {
       } else {
         // 添加新标记点
         this.markers.push(marker);
+		console.log("addMarker markers", this.markers);
       }
     },
     
@@ -265,7 +293,7 @@ export default {
         
         // 添加选中位置的标记
         const markerId = this.markers.length + 1;
-        this.addMarker({
+		const newMarker = {
           id: markerId,
           latitude: location.latitude,
           longitude: location.longitude,
@@ -281,7 +309,10 @@ export default {
             padding: 6,
             display: 'ALWAYS'
           }
-        });
+        };
+        this.addMarker(newMarker);
+		console.log("test");
+		uni.$emit('newMarker', newMarker);
         
         // 保存选中的位置
         this.selectedLocation = {
@@ -293,7 +324,7 @@ export default {
         };
         
         this.selectedMarkerIndex = this.markers.findIndex(marker => marker.id === markerId);
-      } catch (err) {
+	  } catch (err) {
         console.error('选择位置失败', err);
       }
     },

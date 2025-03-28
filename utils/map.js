@@ -76,9 +76,10 @@ export function openMapWithMarkers(markers = []) {
  * @param {Array} markers 标记点数组
  */
 export function navigateToMapPage(markers = []) {
-  if (!markers.length) return;
+	console.log("navigateToMapPage markers", markers);
+	if (!markers.length) return;
   
-  uni.navigateTo({
-    url: '/pages/map/map?markers=' + encodeURIComponent(JSON.stringify(markers))
-  });
+	uni.navigateTo({
+		url: '/pages/map/map?markers=' + encodeURIComponent(JSON.stringify(markers))
+	});
 }

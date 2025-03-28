@@ -113,9 +113,14 @@ export default {
     
     // 添加地点
     addLocation() {
-      uni.switchTab({
-        url: `/pages/map/map?addToTrip=true`
-      });
+		const externoptions = {
+			"addToTrip": true
+		};
+		uni.setStorageSync("externoptions", externoptions);
+		console.log("addLocation", externoptions);
+		uni.switchTab({
+			url: `/pages/map/map`
+		});
     },
     
     // 从行程中移除地点

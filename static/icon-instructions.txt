@@ -1,0 +1,27 @@
+## 图标文件说明
+
+本应用需要以下图标文件：
+
+1. static/home.png - 首页图标
+2. static/home-active.png - 首页选中图标
+3. static/map.png - 地图图标
+4. static/map-active.png - 地图选中图标
+5. static/trip.png - 行程图标
+6. static/trip-active.png - 行程选中图标
+7. static/images/location.png - 当前位置图标
+8. static/images/marker.png - 地图标记图标
+9. static/images/map-feature.png - 首页地图功能图标
+10. static/images/trip-feature.png - 首页行程功能图标
+
+## 图标建议
+
+* 底部导航图标(1-6)建议使用40x40px大小
+* 地图标记图标(7-8)建议使用30x30px大小
+* 功能图标(9-10)建议使用100x100px大小
+
+所有图标推荐使用PNG格式，支持透明背景。
+
+可以从以下网站获取免费图标：
+- Iconfont (https://www.iconfont.cn/)
+- Flaticon (https://www.flaticon.com/)
+- IconFinder (https://www.iconfinder.com/) 

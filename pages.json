@@ -1,0 +1,57 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "行程助手"
+			}
+		},
+		{
+			"path": "pages/map/map",
+			"style": {
+				"navigationBarTitleText": "地图选点"
+			}
+		},
+		{
+			"path": "pages/trip/trip",
+			"style": {
+				"navigationBarTitleText": "行程规划"
+			}
+		},
+		{
+			"path": "pages/trip/tripDetail",
+			"style": {
+				"navigationBarTitleText": "行程详情"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "行程助手",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			// "iconPath": "static/home.png",
+			// "selectedIconPath": "static/home-active.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/map/map",
+			// "iconPath": "static/map.png",
+			// "selectedIconPath": "static/map-active.png",
+			"text": "地图"
+		}, {
+			"pagePath": "pages/trip/trip",
+			// "iconPath": "static/trip.png",
+			// "selectedIconPath": "static/trip-active.png",
+			"text": "行程"
+		}]
+	},
+	"uniIdRouter": {}
+}

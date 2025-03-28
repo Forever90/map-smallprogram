@@ -93,8 +93,8 @@ export default {
     }
   },
   onLoad(options) {
-	uni.$on('newMarker', (data) => {
-		console.log("onshow newMarker", data);
+	uni.$on('markers', (data) => {
+		console.log("onshow markers", data);
 		this.externalMarkers = data; // 接收参数
 		this.showExternalMarkers();
 	});
@@ -123,14 +123,14 @@ export default {
 	  	console.log("onShow");
 		
 		// 检查是否有传入的标记点
-		if (options.markers) {
-			try {
-			  this.externalMarkers = JSON.parse(decodeURIComponent(options.markers));
-			  this.showExternalMarkers();
-			} catch (e) {
-			  console.error('解析标记点数据失败', e);
-			}
-		}
+		// if (options.markers) {
+		// 	try {
+		// 	  this.externalMarkers = JSON.parse(decodeURIComponent(options.markers));
+		// 	  this.showExternalMarkers();
+		// 	} catch (e) {
+		// 	  console.error('解析标记点数据失败', e);
+		// 	}
+		// }
 		  
 		const externoptions = uni.getStorageSync('externoptions');
 		console.log("onShow externoptions", externoptions);
@@ -311,8 +311,7 @@ export default {
           }
         };
         this.addMarker(newMarker);
-		console.log("test");
-		uni.$emit('newMarker', newMarker);
+
         
         // 保存选中的位置
         this.selectedLocation = {
@@ -375,9 +374,9 @@ export default {
         if (prevPage) {
           // 触发上一个页面的方法，传递选中的位置
           prevPage.$vm.onLocationSelected && prevPage.$vm.onLocationSelected(this.selectedLocation);
+		  uni.navigateBack();
         }
         
-        uni.navigateBack();
       } else {
         uni.showToast({
           title: '请选择行程和天数',

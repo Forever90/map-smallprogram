@@ -78,8 +78,10 @@ export function openMapWithMarkers(markers = []) {
 export function navigateToMapPage(markers = []) {
 	console.log("navigateToMapPage markers", markers);
 	if (!markers.length) return;
-  
-	uni.navigateTo({
-		url: '/pages/map/map?markers=' + encodeURIComponent(JSON.stringify(markers))
+	
+	
+	uni.$emit("markers", markers);
+	uni.switchTab({
+		url: '/pages/map/map'
 	});
 }

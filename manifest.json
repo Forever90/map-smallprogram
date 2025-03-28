@@ -59,7 +59,11 @@
             "scope.userLocation": {
                 "desc": "您的位置信息将用于显示当前位置和规划行程"
             }
-        }
+        },        
+		"requiredPrivateInfos": [
+            "getLocation",
+			"chooseLocation"
+        ]
     },
     "mp-alipay" : {
         "usingComponents" : true
